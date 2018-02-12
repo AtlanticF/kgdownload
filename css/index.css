@@ -1,0 +1,144 @@
+a {
+    color: #999;
+}
+
+.bg-header{
+    height: -webkit-calc(100vh - 235px);
+    -moz-calc(100vh - 400px);
+    height: calc(100vh - 400px);
+    background-image: url("../img/bg_header.jpg");
+}
+.download-box {
+    width: 433px;
+    text-align: center;
+    background: rgba(240,240,240,.7);
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    border-radius: 6px;
+    z-index: 2;
+}
+.download-box .header {
+    height: 117px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.download-form {
+    display: flex;
+}
+.search-shadow {
+    flex: 1;
+}
+.search-input {
+    font-size: 12px;
+    display: block;
+    width: 100%;
+    height: 35px;
+    border: none;
+    color: #333;
+    border-radius: 3px 0 0 3px;
+    padding: 0 10px;
+    background-color: rgba(255,255,255,.7);
+}
+.download-btn {
+    font-size: 12px;
+    height: 35px;
+    width: 44px;
+    line-height: 35px;
+    border: 0;
+    border-radius: 0 3px 3px 0;
+    padding: 8px 0;
+    text-align: center;
+    background-color: #434343;
+}
+.head-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-image: url(../img/download_img.png);
+    background-size: 100% 100%;
+    width: 64px;
+    height: 64px;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+.icon-download {
+    background: url(../img/search_icon.svg) no-repeat;
+    width: 16px;
+    height: 16px;
+    z-index: 1;
+    margin: 0 auto;
+}
+.song-info-box {
+    display: none;
+    width: 380px;
+    height: 120px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.song-cover {
+    width: 120px;
+    height: 120px;
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+    float: left;
+}
+.song-name {
+    float: right;
+    font-size: 22px;
+    font-weight: 800;
+    padding: 0 10px;
+    width: 260px;
+}
+.song-worker {
+    float: right;
+    width: 260px;
+    line-height: 30px;
+    color: #999;
+    padding: 0 10px;
+    height: 30px;
+    margin-top: 15px;
+}
+.song-copyright {
+    float: right;
+    width: 260px;
+    line-height: 20px;
+    color: #999;
+    padding: 0 10px;
+    height: 20px;
+    margin-top: 10px;
+}
+.song-worker img {
+    height: 14px;
+    width: 14px;
+}
+.download-step {
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+}
+.download-step span{
+    display: block;
+}
+.feedback {
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    margin: 0 auto;
+    left: 50%;
+    top: 75%;
+    position: absolute;
+}
