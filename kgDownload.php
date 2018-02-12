@@ -76,6 +76,13 @@ if ($file_contents == false) {
 
 preg_match("/window.__DATA__.*}/", $file_contents, $matches);
 $res = str_replace("window.__DATA__ = ", '', $matches);
+if (!$res) {
+    header('Content-Type:application/json; charset=utf-8');
+    $result['msg'] = '请输入正确的歌曲地址';
+    $result['code'] = 201;
+    echo json_encode($result);
+    return false;
+}
 $info = json_decode($res[0], true);
 $song = [];
 $song['name'] = $info['detail']['song_name'];
