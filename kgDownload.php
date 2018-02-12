@@ -6,6 +6,15 @@
  * Time: 20:57
  */
 
+if (empty($_GET)) {
+    header('Content-Type:application/json; charset=utf-8');
+    $result['msg'] = null;
+    $result['code'] = 202;
+    $result['data'] = null;
+    echo json_encode($result);
+    return false;
+}
+
 foreach ($_GET as $get_key=>$get_var) {
     if (is_numeric($get_var)) {
         $get[strtolower($get_key)] = get_int($get_var);
@@ -70,6 +79,7 @@ if ($file_contents == false) {
     header('Content-Type:application/json; charset=utf-8');
     $result['msg'] = '请输入正确的歌曲地址';
     $result['code'] = 201;
+    $result['data'] = null;
     echo json_encode($result);
     return false;
 }
@@ -80,6 +90,7 @@ if (!$res) {
     header('Content-Type:application/json; charset=utf-8');
     $result['msg'] = '请输入正确的歌曲地址';
     $result['code'] = 201;
+    $result['data'] = null;
     echo json_encode($result);
     return false;
 }
