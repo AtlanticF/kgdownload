@@ -10,15 +10,14 @@
     <link rel="stylesheet" href="plugins/layui/css/layui.css">
     <script src="plugins/layui/layui.all.js"></script>
 </head>
-
-<div class="song-info-box" id="j-song-info">
-    <div class="song-cover" id="j-song-cover"></div>
-    <div class="song-name" id="j-song-name"></div>
-    <div class="song-worker" id="j-song-worker"></div>
-    <div class="song-copyright">歌曲来源：<a target="_blank" href="http://kg.qq.com">全民K歌（kg.qq.com）</a></div>
-</div>
-
 <body>
+    <div class="song-info-box" id="j-song-info">
+        <div class="song-cover" id="j-song-cover"></div>
+        <div class="song-name" id="j-song-name"></div>
+        <div class="song-worker" id="j-song-worker"></div>
+        <div class="song-copyright">歌曲来源：<a target="_blank" href="http://kg.qq.com">全民K歌（kg.qq.com）</a></div>
+    </div>
+
     <div class="bg-header">
         <div class="download-box">
             <div class="header">
@@ -70,8 +69,6 @@
                     }
                     layer.msg(data.msg);
                     return false;
-                    // window.location.href = data.data.url;
-                    // return true;
                 }
             });
         });
@@ -100,8 +97,6 @@
         }
     });
 </script>
-
-
 
 
 
