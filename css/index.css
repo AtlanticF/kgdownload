@@ -102,6 +102,10 @@ a {
     width: 260px;
 }
 .song-worker {
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    overflow: hidden;
     float: right;
     width: 260px;
     line-height: 30px;
