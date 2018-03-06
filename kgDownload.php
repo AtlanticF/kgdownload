@@ -6,28 +6,30 @@
  * Time: 20:57
  */
 
-//function getIp()
-//{
-//    $arr_ip_header = array(
-//        'HTTP_CDN_SRC_IP',
-//        'HTTP_PROXY_CLIENT_IP',
-//        'HTTP_WL_PROXY_CLIENT_IP',
-//        'HTTP_CLIENT_IP',
-//        'HTTP_X_FORWARDED_FOR',
-//        'REMOTE_ADDR',
-//    );
-//    $client_ip = 'unknown';
-//    foreach ($arr_ip_header as $key)
-//    {
-//        if (!empty($_SERVER[$key]) && strtolower($_SERVER[$key]) != 'unknown')
-//        {
-//            $client_ip = $_SERVER[$key];
-//            break;
-//        }
-//    }
-//    return $client_ip;
-//}
-//
+date_default_timezone_set("Asia/Shanghai");
+
+function getIp()
+{
+    $arr_ip_header = array(
+        'HTTP_CDN_SRC_IP',
+        'HTTP_PROXY_CLIENT_IP',
+        'HTTP_WL_PROXY_CLIENT_IP',
+        'HTTP_CLIENT_IP',
+        'HTTP_X_FORWARDED_FOR',
+        'REMOTE_ADDR',
+    );
+    $client_ip = 'unknown';
+    foreach ($arr_ip_header as $key)
+    {
+        if (!empty($_SERVER[$key]) && strtolower($_SERVER[$key]) != 'unknown')
+        {
+            $client_ip = $_SERVER[$key];
+            break;
+        }
+    }
+    return $client_ip;
+}
+
 //$ip = getIp();
 //if ($ip != '47.97.177.62') {
 //    header('Content-Type:application/json; charset=utf-8');
@@ -145,6 +147,23 @@ if (empty($song)) {
     $result['msg'] = '获取歌曲信息成功';
     $result['code'] = 200;
 }
+
+//信息入库
+try {
+    $db = new PDO('mysql:host=47.97.177.62;dbname=toymusic;charset=utf8', 'songmeifeng', 'atlantic@163QAZWSX$yCCKbicc&O(1_kldsKsc');
+    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //禁用prepared statements的仿真效果
+    $db->exec("set names 'utf8'");
+} catch (PDOException $e) {
+    print "Error: " . $e->getMessage() . "<br/>";
+    die();
+}
+$sql = 'insert into download_log (ip, song_name, song_url, get_time) values(?, ?, ?, ?)';
+//$sql = "insert into `download_log` (ip, song_name, song_url, get_time) values (" . "'" . getIp() . "', '" . $song['name'] .  "', '" . $musicUrl .  "', '" . date('Y-m-d H:i:s', time()) . "')";
+$stmt = $db->prepare($sql);
+$stmt->execute(array(getIp(), $song['name'], $musicUrl, date('Y-m-d H:i:s', time())));
+//$count = $db->exec($sql);
+$db = null;
+
 echo json_encode($result);
 exit;
 
