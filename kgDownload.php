@@ -148,22 +148,6 @@ if (empty($song)) {
     $result['code'] = 200;
 }
 
-//信息入库
-try {
-    $db = new PDO('mysql:host=47.97.177.62;dbname=toymusic;charset=utf8', '', '');
-    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //禁用prepared statements的仿真效果
-    $db->exec("set names 'utf8'");
-} catch (PDOException $e) {
-    print "Error: " . $e->getMessage() . "<br/>";
-    die();
-}
-$sql = 'insert into download_log (ip, song_name, song_url, get_time) values(?, ?, ?, ?)';
-//$sql = "insert into `download_log` (ip, song_name, song_url, get_time) values (" . "'" . getIp() . "', '" . $song['name'] .  "', '" . $musicUrl .  "', '" . date('Y-m-d H:i:s', time()) . "')";
-$stmt = $db->prepare($sql);
-$stmt->execute(array(getIp(), $song['name'], $musicUrl, date('Y-m-d H:i:s', time())));
-//$count = $db->exec($sql);
-$db = null;
-
 echo json_encode($result);
 exit;
 
