@@ -150,7 +150,7 @@ if (empty($song)) {
 
 //信息入库
 try {
-    $db = new PDO('mysql:host=47.97.177.62;dbname=toymusic;charset=utf8', 'songmeifeng', 'atlantic@163QAZWSX$yCCKbicc&O(1_kldsKsc');
+    $db = new PDO('mysql:host=47.97.177.62;dbname=toymusic;charset=utf8', '', '');
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //禁用prepared statements的仿真效果
     $db->exec("set names 'utf8'");
 } catch (PDOException $e) {
