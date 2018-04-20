@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+             var hm = document.createElement("script");
+             hm.src = "https://hm.baidu.com/hm.js?0f70b766125180ef62ebe2fdc5880ac1";
+             var s = document.getElementsByTagName("script")[0]; 
+             s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
     <meta charset="UTF-8">
     <title>歌曲下载</title>
     <link rel="stylesheet" href="css/style.css">
@@ -51,6 +63,8 @@
     </div>
 </body>
 </html>
+
+
 <script>
     $(function(){
         //搜索歌曲
@@ -60,6 +74,8 @@
                 layer.msg('请输入要下载歌曲的地址');
                 return false;
             }
+            //统计
+            _hmt.push(['_trackEvent', 'search_music', 'search', music_url]);
             $.ajax({
                 type: 'get',
                 url: 'kgDownload.php',
@@ -88,6 +104,8 @@
                 content: $('#j-song-info'),
                 btn: ['下载'],
                 yes: function(){
+                    //统计
+                    _hmt.push(['_trackEvent', 'downlaod_music', 'download', songData.name]);
                     window.location.href = songData.url;
                     $('#j-song-info').hide();
                     layer.close(songInfo);
