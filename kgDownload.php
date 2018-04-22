@@ -30,16 +30,6 @@ function getIp()
     return $client_ip;
 }
 
-//$ip = getIp();
-//if ($ip != '47.97.177.62') {
-//    header('Content-Type:application/json; charset=utf-8');
-//    $result['msg'] = 'access deny.';
-//    $result['code'] = 202;
-//    $result['data'] = null;
-//    echo json_encode($result);
-//    return false;
-//}
-
 if (empty($_GET)) {
     header('Content-Type:application/json; charset=utf-8');
     $result['msg'] = null;
@@ -69,7 +59,7 @@ function get_str($string)
     return $string;
 }
 
-$musicUrl = $get['music_url'];
+$musicUrl = 'http://node.kg.qq.com/play?s=N8QVD1Nn65P53NwE&g_f=personal';
 $ch = curl_init();
 
 $nodePos = strpos($musicUrl,"node");
@@ -140,6 +130,13 @@ $song['singer'] = preg_replace("/\[\/em\]/","@2x.gif'>", $song['singer']);
 $result = [];
 header('Content-Type:application/json; charset=utf-8');
 $result['data'] = $song;
+
+//获取信息不完全
+if (in_array("", $song)) {
+    $result['msg'] = '歌曲信息获取不完全！歌曲可能已被原作者删除，请访问原地址确认。若原地址能正常访问，请反馈到站长邮箱～';
+    $result['code'] = 201;
+}
+
 if (empty($song)) {
     $result['msg'] = '获取歌曲信息失败';
     $result['code'] = 201;
