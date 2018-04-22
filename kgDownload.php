@@ -59,7 +59,7 @@ function get_str($string)
     return $string;
 }
 
-$musicUrl = 'http://node.kg.qq.com/play?s=N8QVD1Nn65P53NwE&g_f=personal';
+$musicUrl = $get['music_url'];
 $ch = curl_init();
 
 $nodePos = strpos($musicUrl,"node");
@@ -139,6 +139,9 @@ if (in_array("", $song)) {
 
 if (empty($song)) {
     $result['msg'] = '获取歌曲信息失败';
+    $result['code'] = 201;
+} else if (in_array("", $song)){
+    $result['msg'] = '歌曲信息获取不完全！歌曲可能已被原作者删除，请访问原地址确认。若原地址能正常访问，请反馈到站长邮箱～';
     $result['code'] = 201;
 } else {
     $result['msg'] = '获取歌曲信息成功';
